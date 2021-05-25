@@ -38,6 +38,6 @@ build-image:
 
 deploy-website:
   stage: deploy
-  image: harbor.tilyes.eu/dockerhub_proxy_cache/alpine/k8s
+  image: alpine/k8s:1.16.15
   script:
     - kubectl create job hello --image=busybox -- echo "Hello World" 
