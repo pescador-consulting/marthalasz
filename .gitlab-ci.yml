@@ -9,6 +9,8 @@ variables:
   DOCKER_TLS_CERTDIR: "/certs"
   DOCKER_TLS_VERIFY: 1
   DOCKER_CERT_PATH: "$DOCKER_TLS_CERTDIR/client"
+  KUBERNETES_SERVICE_ACCOUNT_OVERWRITE: gitlab-runner-gitlab-runner
+  KUBERNETES_SERVICE_ACCOUNT_OVERWRITE_ALLOWED: gitlab-runner-gitlab-runner
 
 services:
   - docker:19.03.13-dind
