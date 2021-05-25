@@ -1,5 +1,6 @@
 stages:
   - build
+  - deploy
 
 image: harbor.tilyes.eu/dockerhub_proxy_cache/library/docker:19.03.13
 
@@ -34,3 +35,9 @@ build-image:
         -t harbor.tilyes.eu/marthalasz/website:latest \
         --cache-from harbor.tilyes.eu/marthalasz/website:latest
     - docker push harbor.tilyes.eu/marthalasz/website:latest
+
+deploy-website:
+  stage: deploy
+  image: harbor.tilyes.eu/dockerhub_proxy_cache/alpine/k8s
+  script:
+    - kubectl create job hello --image=busybox -- echo "Hello World" 

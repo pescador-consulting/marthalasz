@@ -1,4 +1,4 @@
-FROM harbor.tilyes.eu/library/python:3.7
+FROM harbor.tilyes.eu/dockerhub_proxy_cache/library/python:3.7
 
 WORKDIR /app
 
