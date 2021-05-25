@@ -13,22 +13,20 @@ variables:
 services:
   - docker:19.03.13-dind
 
-before_script:    
-  - |
-    for i in $(seq 1 90)
-    do
-        docker info && break
-        echo "Waiting for docker to start"
-        sleep 5s
-    done
-  - mkdir /root/.docker
-  - echo $DOCKER_AUTH_CONFIG > $HOME/.docker/config.json
-  - docker info
-
 build-image:
   stage: build
   image: docker:19.03.12
-  script:
+  script: 
+    - |
+      for i in $(seq 1 90)
+      do
+          docker info && break
+          echo "Waiting for docker to start"
+          sleep 5s
+      done
+    - mkdir /root/.docker
+    - echo $DOCKER_AUTH_CONFIG > $HOME/.docker/config.json
+    - docker info
     - docker pull harbor.tilyes.eu/marthalasz/website:latest || true
     - |
       docker build . \
