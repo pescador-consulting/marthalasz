@@ -40,4 +40,4 @@ deploy-website:
   stage: deploy
   image: alpine/k8s:1.16.15
   script:
-    - kubectl create job hello --image=busybox -- echo "Hello World" 
+    - kubectl rollout restart deployment/marthalasz -n marthalasz
